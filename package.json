@@ -1,0 +1,30 @@
+{
+  "name": "summit-functionality",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/pressedsolutions/summit-functionality.git"
+  },
+  "author": "AndrewRMinion Design",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/pressedsolutions/summit-functionality/issues"
+  },
+  "homepage": "https://bitbucket.org/pressedsolutions/summit-functionality#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "cssnano": "^3.10.0",
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.8.0",
+    "grunt-sass": "^1.2.1",
+    "pixrem": "^3.0.2"
+  }
+}
