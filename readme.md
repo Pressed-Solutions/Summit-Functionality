@@ -5,6 +5,8 @@ A simple plugin to add summit functionality.
 # Usage
 
 - Install the plugin
+- Add categories for the various even days, adding each date in the ACF date field
+- Add speakers under the “Summit Speakers” CPT menu item
 - Use shortcodes as necessary
 
 # Other Notes
@@ -13,11 +15,11 @@ A simple plugin to add summit functionality.
 
 ### `[speaker_list]`
 
-- Displays speaker photo, name, and talk title; accepts these arguments listed below
+- Displays speaker photo, name, and talk title; accepts the arguments listed below
 
 ### `[member_downloads]`
 
-- Displays speaker photo, name, talk title, and link to download (only if a download is specified); accepts these arguments listed below
+- Displays speaker photo, name, talk title, and link to download (only if a download is specified); accepts the arguments listed below
 
 ### `[today_speakers]`
 
@@ -51,6 +53,9 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 
 # Changelog
+
+- 1.3
+    - Add `[today_speakers]` shortcode
 
 - 1.2
     - Add more `WP_Query` paramaters
