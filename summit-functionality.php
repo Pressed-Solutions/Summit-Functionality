@@ -13,6 +13,11 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Include shortcodes
+ */
+require_once( 'inc/shortcodes.php' );
+
+/**
  * Add custom post type
  */
 if ( ! function_exists('summit_speaker_cpt') ) {
