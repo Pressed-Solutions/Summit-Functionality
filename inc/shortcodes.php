@@ -19,6 +19,7 @@ function sf_speaker_list( $attributes ) {
         'orderby'           => 'post_title',
         'order'             => 'ASC',
         'posts_per_page'    => -1,
+        'offset'            => NULL,
     ), $attributes );
 
     // set up query
@@ -34,6 +35,7 @@ function sf_speaker_list( $attributes ) {
         'orderby'           => $shortcode_attributes['orderby'],
         'order'             => $shortcode_attributes['order'],
         'posts_per_page'    => $shortcode_attributes['posts_per_page'],
+        'offset'            => $shortcode_attributes['offset'],
     );
 
     $list_query = new WP_Query( $list_args );
@@ -73,6 +75,7 @@ function sf_member_downloads( $attributes ) {
         'orderby'           => 'post_title',
         'order'             => 'ASC',
         'posts_per_page'    => -1,
+        'offset'            => NULL,
     ), $attributes );
 
     // set up query
@@ -88,6 +91,7 @@ function sf_member_downloads( $attributes ) {
         'orderby'           => $shortcode_attributes['orderby'],
         'order'             => $shortcode_attributes['order'],
         'posts_per_page'    => $shortcode_attributes['posts_per_page'],
+        'offset'            => $shortcode_attributes['offset'],
         'meta_query'    => array(
             array(
                 'key'      => 'video_download_url',
