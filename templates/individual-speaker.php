@@ -3,4 +3,9 @@
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
     <p>Talk Title:</p>
     <h3><?php the_field( 'talk_title' ); ?></h3>
+    <?php
+    if ( isset( $download ) && ( get_field( 'video_download_url' ) ) ) {
+        echo '<p><a class="btn btn-primary" href="' . get_field( 'video_download_url' ) . '">Download</a></p>';
+    }
+    ?>
 </div>
