@@ -29,6 +29,10 @@ Available shortcodes:
 
 #Changelog
 
+- 1.1
+    - Add `[member_downloads]` shortcode to list all available downloads
+    - Add `offset` paramater support to `[speaker_list]` shortcode
+
 - 1.0
     - Add “summit_speaker” custom post type
     - Add `[speaker_list]` shortcode
