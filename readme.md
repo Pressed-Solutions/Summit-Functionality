@@ -9,12 +9,30 @@ A simple plugin to add summit functionality.
 
 #Other Notes
 
-Available shortcodes:
+##Available shortcodes:
 
-##`[speaker_list]`
+###`[speaker_list]`
 
-- displays speaker photo, name, and talk title; accepts these arguments (see [WP_Query reference](https://developer.wordpress.org/reference/classes/wp_query/) for more info on defaults not specified here):
+- Displays speaker photo, name, and talk title; accepts these arguments listed below
+
+###`[member_downloads]`
+
+- Displays speaker photo, name, talk title, and link to download (only if a download is specified); accepts these arguments listed below
+
+##Shortcode arguments
+
+If no default is listed here, the parameter defaults to NULL. For more info, see [WP_Query reference](https://developer.wordpress.org/reference/classes/wp_query/).
+
     - `post_type` (defaults to 'summit_speaker')
+    - `p`
+    - `title`
+    - `pagename`
+    - `post_parent`
+    - `post_parent__in`
+    - `post_parent_not__in`
+    - `post__in`
+    - `post__not_in`
+    - `post_name__in`
     - `cat`
     - `category_name`
     - `category__in`
@@ -28,6 +46,9 @@ Available shortcodes:
 
 
 #Changelog
+
+- 1.2
+    - Add more `WP_Query` paramaters
 
 - 1.1
     - Add `[member_downloads]` shortcode to list all available downloads
