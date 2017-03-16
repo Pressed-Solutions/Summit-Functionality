@@ -42,13 +42,14 @@ function sf_speaker_list( $attributes ) {
 
     // loop
     ob_start();
-    if ( $list_query->have_posts() ) {
-        echo '<section class="speaker-wrapper ' . implode( ' ', get_post_class() ) . '">';
-        while ( $list_query->have_posts() ) {
+    if ( $list_query->have_posts() ) { ?>
+        <section <?php post_class( 'speaker-wrapper' ); ?>>
+        <?php while ( $list_query->have_posts() ) {
             $list_query->the_post();
             include( plugin_dir_path( __FILE__ ) . '../templates/individual-speaker.php' );
-        }
-        echo '</section>';
+        } ?>
+        </section>
+    <?php
     }
     $shortcode_content = ob_get_clean();
     wp_reset_postdata();
@@ -109,15 +110,15 @@ function sf_member_downloads( $attributes ) {
 
     // loop
     ob_start();
-    if ( $downloads_query->have_posts() ) {
-        echo '<section class="speaker-wrapper ' . implode( ' ', get_post_class() ) . '">';
-        while ( $downloads_query->have_posts() ) {
+    if ( $downloads_query->have_posts() ) { ?>
+        <section <?php post_class( 'speaker-wrapper' ); ?>>
+        <?php while ( $downloads_query->have_posts() ) {
             $downloads_query->the_post();
             $download = true;
             include( plugin_dir_path( __FILE__ ) . '../templates/individual-speaker.php' );
-        }
-        echo '</section>';
-    }
+        } ?>
+        </section>
+    <?php }
     $shortcode_content = ob_get_clean();
     wp_reset_postdata();
 
