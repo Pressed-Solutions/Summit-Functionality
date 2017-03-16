@@ -13,7 +13,6 @@ if (!defined('ABSPATH')) {
 }
 
 /**
-/**
  * Add custom post type
  */
 if ( ! function_exists('summit_speaker_cpt') ) {
@@ -111,3 +110,94 @@ function sf_flush_rewrites() {
     summit_speaker_cpt();
     flush_rewrite_rules();
 }
+
+/**
+ * Locate template.
+ *
+ * Locate the called template.
+ * Search Order:
+ * 1. /themes/theme/$template_name
+ * 2. /plugins/summit-functionality/templates/$template_name.
+ *
+ * @param 	string 	$template_name			Template to load.
+ * @param 	string 	$string $template_path	Path to templates.
+ * @param 	string	$default_path			Default path to template files.
+ * @return 	string 							Path to the template file.
+ */
+
+function sf_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+
+    // Set default plugin templates path.
+    if ( ! $default_path ) :
+        $default_path = plugin_dir_path( __FILE__ ) . 'templates/'; // Path to the template folder
+    endif;
+
+    // Search template file in theme folder.
+    $template = locate_template( array(
+        $template_path . $template_name,
+        $template_name
+    ) );
+
+    // Get plugins template file.
+    if ( ! $template ) :
+        $template = $default_path . $template_name;
+    endif;
+
+    return apply_filters( 'sf_locate_template', $template, $template_name, $template_path, $default_path );
+}
+
+/**
+ * Get template.
+ *
+ * Search for the template and include the file.
+ *
+ * @see sf_locate_template()
+ *
+ * @param string 	$template_name			Template to load.
+ * @param array 	$args					Args passed for the template file.
+ * @param string 	$string $template_path	Path to templates.
+ * @param string	$default_path			Default path to template files.
+ */
+function sf_get_template( $template_name, $args = array(), $tempate_path = '', $default_path = '' ) {
+
+    if ( is_array( $args ) && isset( $args ) ) :
+        extract( $args );
+    endif;
+
+    $template_file = sf_locate_template( $template_name, $tempate_path, $default_path );
+
+    if ( ! file_exists( $template_file ) ) :
+        printf( '<code>%s</code> does not exist.', $template_file );
+        return;
+    endif;
+
+    include $template_file;
+}
+
+/**
+ * Template loader.
+ *
+ * The template loader will check if WP is loading a template
+ * for a specific Post Type and will try to load the template
+ * from out 'templates' directory.
+ *
+ * @param	string	$template	Template file that is being loaded.
+ * @return	string				Template file that should be loaded.
+ */
+function sf_template_loader( $template ) {
+
+    $find = array();
+    $file = '';
+
+    if ( is_singular( 'summit_speaker' ) ) :
+        $file = 'individual-speaker-page.php';
+    endif;
+
+    if ( $file && file_exists( sf_locate_template( $file ) ) ) :
+        $template = sf_locate_template( $file );
+    endif;
+
+    return $template;
+
+}
+add_filter( 'template_include', 'sf_template_loader' );
