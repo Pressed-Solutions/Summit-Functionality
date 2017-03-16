@@ -48,7 +48,7 @@ if ( ! function_exists('summit_speaker_cpt') ) {
             'filter_items_list'     => 'Filter summit speakers list',
         );
         $rewrite = array(
-            'slug'                  => 'summit-speaker',
+            'slug'                  => 'speaker',
             'with_front'            => false,
             'pages'                 => true,
             'feeds'                 => true,
