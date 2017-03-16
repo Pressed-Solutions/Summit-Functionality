@@ -253,8 +253,8 @@
             "key": "field_54d9e1597d52e",
             "label": "Health Experts",
             "name": "health_experts",
-            "type": "repeater",
-            "instructions": "",
+            "type": "wysiwyg",
+            "instructions": "Use shortcode to list speakers",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -262,98 +262,11 @@
                 "class": "",
                 "id": ""
             },
-            "row_min": "",
-            "row_limit": "",
-            "layout": "row",
-            "button_label": "Add Row",
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "sub_fields": [
-                {
-                    "key": "field_54d9e18f7d52f",
-                    "label": "Image",
-                    "name": "image",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "preview_size": "thumbnail",
-                    "library": "all",
-                    "return_format": "url",
-                    "min_width": 0,
-                    "min_height": 0,
-                    "min_size": 0,
-                    "max_width": 0,
-                    "max_height": 0,
-                    "max_size": 0,
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_551a04cc93a6d",
-                    "label": "Experts Page Link",
-                    "name": "experts_page_link",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "formatting": "html",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_54d9e19a7d530",
-                    "label": "Name",
-                    "name": "name",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "formatting": "html",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_54d9e1a17d531",
-                    "label": "Content",
-                    "name": "content",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "tabs": "all",
-                    "delay": 0
-                }
-            ]
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_551c5b4ba728e",
@@ -713,5 +626,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1489608265
+    "modified": 1489687726
 }
