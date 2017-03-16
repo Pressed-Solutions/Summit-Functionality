@@ -16,8 +16,8 @@ function sf_speaker_list( $attributes ) {
         'tag_id'            => NULL,
         'tag__in'           => array(),
         'tag_slug__in'      => array(),
-        'orderby'           => 'date',
-        'order'             => 'DESC',
+        'orderby'           => 'post_title',
+        'order'             => 'ASC',
         'posts_per_page'    => -1,
     ), $attributes );
 
