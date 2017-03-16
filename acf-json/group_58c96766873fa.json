@@ -11,7 +11,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
@@ -28,7 +28,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
@@ -42,6 +42,30 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_58ca91bef5615",
+            "label": "Background Color",
+            "name": "background_color",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Blue": "Blue",
+                "Green": "Green"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value"
         },
         {
             "key": "field_552bcbf8d28c2",
@@ -130,20 +154,39 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
+            "return_format": "url",
             "preview_size": "thumbnail",
             "library": "all",
-            "return_format": "url",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_551b5eec5f4a8",
+            "label": "Bonus Link",
+            "name": "bonus_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_575703439326a",
@@ -163,26 +206,6 @@
             "media_upload": 1,
             "tabs": "all",
             "delay": 0
-        },
-        {
-            "key": "field_551b5eec5f4a8",
-            "label": "Bonus Link",
-            "name": "bonus_link",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "formatting": "html",
-            "maxlength": ""
         },
         {
             "key": "field_5525040a2541c",
@@ -253,7 +276,7 @@
             "key": "field_551d632714740",
             "label": "Video URL",
             "name": "video_link",
-            "type": "url",
+            "type": "oembed",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -262,8 +285,8 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "width": 320,
+            "height": 195
         },
         {
             "key": "field_58c9738efdd79",
@@ -294,11 +317,28 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<a href=\"https:\/\/weightloss-summit.com\/sales\"><img class=\"alignnone\" src=\"https:\/\/weightloss-summit.com\/wp-content\/themes\/weightlosssummit\/img\/sales.png\" alt=\"Get Instant Access!\" width=\"730\" height=\"193\" \/><\/a>",
+            "default_value": "<a href=\"https:\/\/weightloss-summit.com\/sales\"><img class=\"alignnone\" src=\"https:\/\/weightloss-summit.com\/wp-content\/plugins\/summit-functionality\/assets\/img\/session-ended-banner.png\" alt=\"Get Instant Access!\" width=\"648\" height=\"450\" \/><\/a>",
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_58ca95ff11fae",
+            "label": "Talk Description",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "message": "Talk description and details below",
+            "new_lines": "wpautop",
+            "esc_html": 0
         }
     ],
     "location": [
@@ -307,6 +347,13 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "summit_speaker"
+            }
+        ],
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "page-individual-session.php"
             }
         ]
     ],
@@ -318,5 +365,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1489670345
+    "modified": 1489673546
 }
