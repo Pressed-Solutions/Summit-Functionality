@@ -19,6 +19,11 @@ A simple plugin to add summit functionality.
 
 - Displays speaker photo, name, talk title, and link to download (only if a download is specified); accepts these arguments listed below
 
+### `[today_speakers]`
+
+- Displays speaker photo, name, and talk title for speakers in today’s category; accepts the arguments listed below
+- Supplies the `sf_purchase_link` filter for modifying the purchase page URL; defaults to `get_home_url() . '/purchase/'`
+
 ## Shortcode arguments
 
 If no default is listed here, the parameter defaults to NULL. For more info, see [WP_Query reference](https://developer.wordpress.org/reference/classes/wp_query/).

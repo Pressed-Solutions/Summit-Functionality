@@ -71,6 +71,80 @@ function sf_member_downloads( $attributes ) {
 }
 
 /**
+ * List today’s speakers
+ * @param  array  $attributes shortcode attributes
+ * @return string HTML content string
+ */
+add_shortcode( 'today_speakers', 'sf_today_speakers' );
+function sf_today_speakers( $attributes ) {
+    // get today’s category
+    $category_args = array(
+        'meta_query' => array(
+            array(
+                'key'       => 'date',
+                'value'     => '',
+                'compare'   => '!=',
+            ),
+        ),
+    );
+    $categories = get_categories( $category_args );
+
+    $cat_array = array();
+    $first_date = '100000000';
+    $last_date = '0';
+    if ( $categories ) {
+        foreach ( $categories as $category ) {
+            $this_category_date = get_field( 'date', $category );
+            if ( $this_category_date == date( 'Ymd' ) ) {
+                $cat_array[] = $category->term_id;
+            }
+            if ( $this_category_date < $first_date ) {
+                $first_date = $this_category_date;
+            }
+            if ( $this_category_date > $last_date ) {
+                $last_date = $this_category_date;
+            }
+        }
+    }
+
+    // set up query
+    if ( $cat_array ) {
+        $downloads_args = array_merge( parse_shortcode_args( $attributes ), array(
+            'category__in'  => $cat_array,
+        ));
+
+        $downloads_query = new WP_Query( $downloads_args );
+
+        // loop
+        ob_start();
+        if ( $downloads_query->have_posts() ) { ?>
+            <section <?php post_class( 'speaker-wrapper' ); ?>>
+            <?php while ( $downloads_query->have_posts() ) {
+                $downloads_query->the_post();
+                $download = true;
+                include( plugin_dir_path( __FILE__ ) . '../templates/individual-speaker.php' );
+            } ?>
+            </section>
+        <?php }
+        wp_reset_postdata(); ?>
+
+    <?php } else {
+    if ( $first_date > date( 'Ymd' ) ) { ?>
+        <h2>Sorry, Nothing&rsquo;s Available Yet</h2>
+        <p>Please come back on <?php echo date( 'l, F j, Y', strtotime( $first_date ) ) ?>.</p>
+    <?php } elseif ( $last_date < date( 'Ymd' ) ) { ?>
+        <h2>Sorry, This Summit Has Ended</h2>
+        <p>However, you can still purchase access!</p>
+        <p><a href="<?php echo apply_filters( 'sf_purchase_link', get_home_url() . '/purchase/' ); ?>" class="btn btn-primary btn-lg">Purchase Access</a></p>
+    <?php }
+    }
+
+    $shortcode_content = ob_get_clean();
+
+    return $shortcode_content;
+}
+
+/**
  * Parse shortcode attributes to WP_Query parameters
  * @param  array $attributes shortcode attributes
  * @return array WP_Query parameters
