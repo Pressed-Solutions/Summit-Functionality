@@ -5,7 +5,7 @@
     <h3><?php the_field( 'talk_title' ); ?></h3>
     <?php
     if ( isset( $download ) && ( get_field( 'video_download_url' ) ) ) {
-        echo '<p><a class="btn btn-primary" href="' . get_field( 'video_download_url' ) . '">Download</a></p>';
+        echo '<p><a class="btn btn-primary" target="_blank" href="' . get_field( 'video_download_url' ) . '">Download</a></p>';
     }
     ?>
 </div>
