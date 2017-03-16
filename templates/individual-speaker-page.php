@@ -74,7 +74,7 @@
         </div>
 
         <div class="col-md-4 dmbs-right speaker-info">
-            <img src="<?php the_field('speaker_image'); ?>" class="img img-responsive speaker-photo" alt="<?php the_title(); ?>" />
+            <?php echo wp_get_attachment_image( get_field( 'speaker_image' ), array( 250, 250 ), false, array( 'class' => 'speaker-photo' ) ) ?>
             <h2><?php the_title(); ?></h2>
             <?php if ( get_field( 'speaker_website' ) ) : ?>
                 <a href="<?php the_field( 'speaker_website' ); ?>">
