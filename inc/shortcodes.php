@@ -79,8 +79,7 @@ function parse_shortcode_args( $attributes ) {
     $shortcode_attributes = shortcode_atts( array (
         'post_type'             => 'summit_speaker',
         'p'                     => NULL,
-        'title'                 => NULL,
-        'pagename'              => NULL,
+        'name'              => NULL,
         'post_parent'           => NULL,
         'post_parent__in'       => array(),
         'post_parent_not__in'   => array(),
@@ -103,8 +102,7 @@ function parse_shortcode_args( $attributes ) {
     return array(
         'post_type'             => $shortcode_attributes['post_type'],
         'p'                     => $shortcode_attributes['p'],
-        'title'                 => $shortcode_attributes['title'],
-        'pagename'              => $shortcode_attributes['pagename'],
+        'name'              => $shortcode_attributes['name'],
         'post_parent'           => $shortcode_attributes['post_parent'],
         'post_parent__in'       => empty( $shortcode_attributes['post_parent__in'] ) ? NULL : explode( ',', str_replace( ' ', '', $shortcode_attributes['post_parent__in'] ) ),
         'post_parent_not__in'   => empty( $shortcode_attributes['post_parent_not__in'] ) ? NULL : explode( ',', str_replace( ' ', '', $shortcode_attributes['post_parent_not__in'] ) ),
