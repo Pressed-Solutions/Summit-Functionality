@@ -101,3 +101,13 @@ function sf_acf_json_load_point( $paths ) {
     $paths[] = plugin_dir_path( __FILE__ ) . 'acf-json';
     return $paths;
 }
+
+/**
+ * Flush rewrite rules on activation
+ */
+register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
+register_activation_hook( __FILE__, 'sf_flush_rewrites' );
+function sf_flush_rewrites() {
+    summit_speaker_cpt();
+    flush_rewrite_rules();
+}
