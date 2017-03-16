@@ -75,7 +75,7 @@ if ( ! function_exists('summit_speaker_cpt') ) {
             'capability_type'       => 'page',
             'show_in_rest'          => true,
         );
-        register_post_type( 'summit-speaker', $args );
+        register_post_type( 'summit_speaker', $args );
 
     }
     add_action( 'init', 'summit_speaker_cpt', 0 );
@@ -87,8 +87,8 @@ if ( ! function_exists('summit_speaker_cpt') ) {
  * @return string ACF local JSON save directory
  */
 add_filter( 'acf/settings/save_json', 'sf_acf_json_save_point' );
-function sf_acf_json_save_point( $path ) {
-    return plugin_dir_path( __FILE__ ) . '/acf-json';
+function sf_acf_json_save_point() {
+    return plugin_dir_path( __FILE__ ) . 'acf-json';
 }
 
 /**
@@ -97,7 +97,7 @@ function sf_acf_json_save_point( $path ) {
  * @return array ACF local JSON open directory
  */
 add_filter( 'acf/settings/load_json', 'sf_acf_json_load_point' );
-function sf_acf_json_load_point( $path ) {
-    $paths[] = plugin_dir_path( __FILE__ ) . '/acf-json';
+function sf_acf_json_load_point( $paths ) {
+    $paths[] = plugin_dir_path( __FILE__ ) . 'acf-json';
     return $paths;
 }
