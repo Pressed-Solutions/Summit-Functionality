@@ -41,7 +41,7 @@ function sf_speaker_list( $attributes ) {
     // loop
     ob_start();
     if ( $list_query->have_posts() ) {
-        echo '<section class="speakers-wrapper' . implode( ' ', get_post_class() ) . '">';
+        echo '<section class="speaker-wrapper ' . implode( ' ', get_post_class() ) . '">';
         while ( $list_query->have_posts() ) {
             $list_query->the_post();
             include( plugin_dir_path( __FILE__ ) . '../templates/individual-speaker.php' );

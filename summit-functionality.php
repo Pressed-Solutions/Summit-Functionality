@@ -86,6 +86,14 @@ if ( ! function_exists('summit_speaker_cpt') ) {
 }
 
 /**
+ * Enqueue assets
+ */
+add_action( 'wp_enqueue_scripts', 'sf_enqueue_scripts' );
+function sf_enqueue_scripts() {
+    wp_enqueue_style( 'summit-speaker', plugin_dir_url( __FILE__ ) . 'assets/css/summit-speakers.min.css' );
+}
+
+/**
  * Set ACF local JSON save directory
  * @param  string $path ACF local JSON save directory
  * @return string ACF local JSON save directory

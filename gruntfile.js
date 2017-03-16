@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     // Watch task config
     watch: {
         styles: {
-            files: "css/*.scss",
+            files: "assets/scss/*.scss",
             tasks: ['sass', 'postcss'],
         },
         javascript: {
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     sass: {
         dev: {
             files: {
-                "css/style.min.css" : "css/style.scss",
+                "assets/css/summit-speakers.min.css" : "assets/scss/summit-speakers.scss",
             }
         }
     },
@@ -31,13 +31,13 @@ module.exports = function (grunt) {
             ]
         },
         dist: {
-            src: 'css/*.min.css',
+            src: 'assets/css/*.min.css',
         }
     },
     browserSync: {
         dev: {
             bsFiles: {
-                src : ['css/*.min.css', '**/*.php', '**/*.js', '**/*.svg', '**/*.html', '!node_modules'],
+                src : ['assets/css/*.min.css', '**/*.php', '**/*.js', '**/*.svg', '**/*.html', '!node_modules'],
             },
             options: {
                 watchTask: true,

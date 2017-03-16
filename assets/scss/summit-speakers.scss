@@ -1,0 +1,37 @@
+.speaker {
+    &-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .speaker {
+            padding: 1em;
+            text-align: center;
+
+            h2, h3 { font-weight: 700; }
+
+            h2 {
+                font-size: 1.3em;
+                text-transform: uppercase;
+            }
+
+            h3 {font-size: 1.1em; }
+
+            p {
+                margin-bottom: 0;
+
+                & + h3 { margin-top: 0; }
+            }
+
+            @media screen and (min-width: 1000px) { width: 25%; }
+            @media screen and (min-width: 500px) and (max-width: 999px) { width: 33%; }
+            @media screen and (min-width: 300px) and (max-width: 499px) { width: 50%; }
+        }
+    }
+
+    &-photo {
+        border-radius: 50%;
+        max-width: 100%;
+        height: auto;
+    }
+}
