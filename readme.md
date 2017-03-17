@@ -52,6 +52,12 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 - [`offset`](https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters)
 
 
+## Filters
+
+- `sf_purchase_link`: purchase page URL; defaults to `get_home_url() . '/purchase/'`
+- `sf_purchase_access_image`: purchase image shown at the bottom of each summit_speaker content; defaults to `get_stylesheet_directory_uri() . '/img/sales.png'`
+
+
 # Changelog
 
 - 1.3
