@@ -37,7 +37,7 @@
             the_content();
             ?>
 
-            <p><a href="<?php echo get_home_url(); ?>/sales/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/sales.png" alt="Register now" /></a></p>
+            <p><a href="<?php echo apply_filters( 'sf_purchase_link', get_home_url() . '/purchase/' ); ?>"><img src="<?php echo apply_filters( 'sf_purchase_access_image', get_stylesheet_directory_uri() . '/img/sales.png' ); ?>" alt="Register now" class="img img-responsive" /></a></p>
             <?php wp_link_pages(); ?>
 
             <h2 id="comment-both"><span>Comments</span></h2>
@@ -81,16 +81,29 @@
                     <?php the_field( 'speaker_website' ); ?>
                 </a>
             <?php endif; ?>
+
             <hr>
-            <?php if ( get_field( 'bonus_image' ) ): ?>
-                <h2 class="text-center bonus-header">Free Bonus Download</h2>
-                <a href="<?php the_field( 'bonus_link' ); ?>"><img src="<?php the_field( 'bonus_image' ); ?>" class="img img-responsive" alt="Free Bonus" /></a>
-            <?php endif; ?>
 
             <?php if ( get_field( 'bonus_offer' ) ): ?>
                 <h2 class="text-center bonus-header">Bonus Offer</h2>
                 <?php the_field( 'bonus_offer' ); ?>
             <?php endif; ?>
+
+            <?php if ( get_field( 'bonus_image' ) || get_field( 'bonuses_r' ) ): ?>
+                <h2 class="text-center bonus-header">Free Bonus Download</h2>
+            <?php endif; ?>
+
+            <?php if ( get_field( 'bonus_image' ) ): ?>
+                <a href="<?php the_field( 'bonus_link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'bonus_image' ), array( 250, 250 ), false, array( 'class' => 'img img-responsive' ) ) ?></a>
+            <?php endif; ?>
+
+            <?php
+            if ( get_field( 'bonuses_r' ) ) {
+                foreach ( get_field( 'bonuses_r' ) as $bonus ) { ?>
+                    <p><a href="<?php echo $bonus['bonus_link_r']; ?>"><?php echo wp_get_attachment_image( $bonus['bonus_image_r'], array( 250, 250 ), false, array( 'class' => 'img img-responsive' ) ) ?></a></p>
+                <?php }
+            } ?>
+
         </div>
 
     </div>

@@ -146,6 +146,25 @@
             "placeholder": ""
         },
         {
+            "key": "field_575703439326a",
+            "label": "Bonus Offer",
+            "name": "bonus_offer",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "toolbar": "full",
+            "media_upload": 1,
+            "tabs": "all",
+            "delay": 0
+        },
+        {
             "key": "field_551b5ece5f4a7",
             "label": "Bonus Image",
             "name": "bonus_image",
@@ -158,7 +177,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
+            "return_format": "id",
             "preview_size": "thumbnail",
             "library": "all",
             "min_width": "",
@@ -187,25 +206,6 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
-        },
-        {
-            "key": "field_575703439326a",
-            "label": "Bonus Offer",
-            "name": "bonus_offer",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "toolbar": "full",
-            "media_upload": 1,
-            "tabs": "all",
-            "delay": 0
         },
         {
             "key": "field_5525040a2541c",
@@ -239,15 +239,15 @@
                         "class": "",
                         "id": ""
                     },
+                    "return_format": "id",
                     "preview_size": "thumbnail",
                     "library": "all",
-                    "return_format": "url",
-                    "min_width": 0,
-                    "min_height": 0,
-                    "min_size": 0,
-                    "max_width": 0,
-                    "max_height": 0,
-                    "max_size": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
                     "mime_types": ""
                 },
                 {
@@ -365,5 +365,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1489681187
+    "modified": 1489719565
 }
