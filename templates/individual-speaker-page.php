@@ -94,7 +94,7 @@
             <?php endif; ?>
 
             <?php if ( get_field( 'bonus_image' ) ): ?>
-                <a href="<?php the_field( 'bonus_link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'bonus_image' ), array( 250, 250 ), false, array( 'class' => 'img img-responsive' ) ); ?></a>
+                <p><a href="<?php the_field( 'bonus_link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'bonus_image' ), array( 250, 250 ), false, array( 'class' => 'img img-responsive' ) ); ?></a></p>
             <?php endif; ?>
 
             <?php
