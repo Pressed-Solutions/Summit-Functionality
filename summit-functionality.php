@@ -3,7 +3,7 @@
  * Plugin Name: Summit Functionality
  * Plugin URI: https://bitbucket.org/pressedsolutions/summit-functionality
  * Description: Summit functionality including speakers, date-restricted video access, and more
- * Version: 1.3
+ * Version: 1.4
  * Author: Pressed Solutions
  * Author URI: https://pressedsolutions.com
  */
@@ -86,6 +86,19 @@ if ( ! function_exists('summit_speaker_cpt') ) {
 }
 
 /**
+ * Add options page
+ */
+if( function_exists( 'acf_add_options_page' ) ) {
+    acf_add_options_page( array(
+        'page_title' 	=> 'Summit Settings',
+        'menu_title'	=> 'Summit Settings',
+        'menu_slug' 	=> 'summit-settings',
+        'capability'	=> 'edit_others_posts',
+        'redirect'		=> false,
+    ));
+}
+
+/**
  * Enqueue assets
  */
 add_action( 'wp_enqueue_scripts', 'sf_enqueue_scripts' );
@@ -95,6 +108,7 @@ function sf_enqueue_scripts() {
 
 /**
  * Set ACF local JSON save directory
+ *
  * @param  string $path ACF local JSON save directory
  * @return string ACF local JSON save directory
  */
@@ -105,6 +119,7 @@ function sf_acf_json_save_point() {
 
 /**
  * Set ACF local JSON open directory
+ *
  * @param  array $path ACF local JSON open directory
  * @return array ACF local JSON open directory
  */
@@ -214,3 +229,40 @@ function sf_template_loader( $template ) {
 
 }
 add_filter( 'template_include', 'sf_template_loader' );
+
+/**
+ * Determine if user has access to content based on membership and current date
+ *
+ * @param  string  $content_date_start Ymd-formatted date string when content becomes available
+ * @param  string  $content_date_end   Ymd-formatted date string when content becomes unavailable; defaults to 1 day after $content_dat_start
+ * @param  integer $time               hour of day when content becomes available/unavailable; defaults to 10
+ * @param  string  $timezone           timezone string; defaults to EST
+ * @param  string  $membership_level   string of Memberium membership level for determining access
+ * @return boolean user does/doesn't have access
+ */
+function get_access_permissions( $content_date_start, $content_date_end = NULL, $time = '10', $timezone = 'EST', $membership_level = NULL ) {
+    // content begin date
+    $content_date_start = date_create_from_format( 'Ymd H:i:s T', $content_date_start . '00:00:00 ' . $timezone );
+    $content_date_start = date_add( $content_date_start, date_interval_create_from_date_string( $time . ' hours' ) );
+
+    // content end date
+    if ( ! $content_date_end ) {
+        $content_date_end = date_add( $content_date_start, date_interval_create_from_date_string( '1 day' ) );
+    } else {
+        $content_date_end = date_create_from_format( 'Ymd H:i:s T', $content_date_end . '00:00:00 ' . $timezone );
+        $content_date_end = date_add( $content_date_end, date_interval_create_from_date_string( $time . ' hours' ) );
+    }
+
+    // current date
+    $current_date = new DateTime();
+    $current_date = date_timezone_set( $current_date, timezone_open( $timezone ) );
+
+    if ( ( $current_date >= $content_date_start ) && ( $current_date <= $content_date_end || memb_hasMembershipLevel( $membership_level ) ) ) {
+        return true;
+    }
+
+    if ( $_GET['admin_preview'] && current_user_can( 'edit_others_posts' ) ) {
+        return true;
+    }
+    return false;
+}

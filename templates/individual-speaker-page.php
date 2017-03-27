@@ -18,10 +18,12 @@
                 // check categories for the day to show video content
                 $post_categories = get_the_category();
                 foreach ( $post_categories as $post_category ) {
+                    $memberium_level = get_option( 'memberium_level', 'option' );
                     $active_date = get_field( 'date', $post_category );
-                    if ( $active_date == date( 'Ymd' ) || ( $active_date >= date( 'Ymd' ) && is_user_logged_in() ) ) {
-                        echo '<p>' . wp_oembed_get( get_field( 'video_link' ) ) . '</p>';
-                        if ( get_field( 'video_download_url' ) && is_user_logged_in() ) {
+                    $active_access = get_access_permissions( $active_date, NULL, 10, 'EST', $memberium_level );
+                    if ( $active_access ) {
+                        echo '<p class="embed-container">' . get_field( 'video_link' ) . '</p>';
+                        if ( get_field( 'video_download_url' ) && memb_hasMembershipLevel( $memberium_level ) ) {
                             echo '<p><a href="' . get_field( 'video_download_url' ) . '" class="btn btn-primary btn-lg btn-block">Download Video</a></p>';
                         }
                     } elseif ( $active_date < date( 'Ymd' ) && ! is_user_logged_in() ) {

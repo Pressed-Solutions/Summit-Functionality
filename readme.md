@@ -15,6 +15,10 @@ Each speaker’s video and download link will show up only on the specified day 
 
 # Other Notes
 
+## Speaker Pages
+
+To preview speaker’s pages with the protected content, log in as an administrator or editor and add the `?admin_preview=true` parameter to the URL.
+
 ## Available shortcodes:
 
 ### `[speaker_list]`
@@ -63,6 +67,10 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 
 # Changelog
+
+- 1.4
+    - Add time settings for content access
+    - Improve access control using `memb_hasMembershipLevel` with a specified level instead of relying on `is_user_logged_in`
 
 - 1.3
     - Add `[today_speakers]` shortcode

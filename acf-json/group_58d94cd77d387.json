@@ -1,0 +1,43 @@
+{
+    "key": "group_58d94cd77d387",
+    "title": "Summit Settings",
+    "fields": [
+        {
+            "key": "field_58d978394dd65",
+            "label": "Memberium Level",
+            "name": "memberium_level",
+            "type": "text",
+            "instructions": "Name of the Memberium membership level for content control",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "summit-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1490647188
+}
