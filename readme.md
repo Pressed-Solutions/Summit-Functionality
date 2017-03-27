@@ -9,7 +9,7 @@ Each speaker’s video and download link will show up only on the specified day 
 # Usage
 
 - Install the plugin
-- Add a category termm for the various event days, and add the date in the ACF date field on each category item
+- Add a category term for the various event days, and add the date in the ACF date field on each category item
 - Add speakers under the “Summit Speakers” CPT menu item
 - Use the [supplied shortcodes](#available-shortcodes) as necessary to display speakers, downloads, etc.
 
