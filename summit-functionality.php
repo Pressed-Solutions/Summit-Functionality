@@ -234,7 +234,7 @@ add_filter( 'template_include', 'sf_template_loader' );
  * Determine if user has access to content based on membership and current date
  *
  * @param  string  $content_date_start Ymd-formatted date string when content becomes available
- * @param  string  $content_date_end   Ymd-formatted date string when content becomes unavailable; defaults to 1 day after $content_dat_start
+ * @param  string  $content_date_end   Ymd-formatted date string when content becomes unavailable; defaults to 1 day after $content_date_start
  * @param  integer $time               hour of day when content becomes available/unavailable; defaults to 10
  * @param  string  $timezone           timezone string; defaults to EST
  * @param  string  $membership_level   string of Memberium membership level for determining access
@@ -246,18 +246,21 @@ function get_access_permissions( $content_date_start, $content_date_end = NULL, 
     $content_date_start = date_add( $content_date_start, date_interval_create_from_date_string( $time . ' hours' ) );
 
     // content end date
-    if ( ! $content_date_end ) {
-        $content_date_end = date_add( $content_date_start, date_interval_create_from_date_string( '1 day' ) );
-    } else {
+    if ( $content_date_end && $content_date_end != NULL ) {
         $content_date_end = date_create_from_format( 'Ymd H:i:s T', $content_date_end . '00:00:00 ' . $timezone );
         $content_date_end = date_add( $content_date_end, date_interval_create_from_date_string( $time . ' hours' ) );
+    } else {
+        $content_date_end = date_create_from_format( 'U', $content_date_start->format( 'U' ) );
+        $content_date_end = date_add( $content_date_end, date_interval_create_from_date_string( '1 day' ) );
     }
 
     // current date
     $current_date = new DateTime();
     $current_date = date_timezone_set( $current_date, timezone_open( $timezone ) );
 
-    if ( ( $current_date >= $content_date_start ) && ( $current_date <= $content_date_end || memb_hasMembershipLevel( $membership_level ) ) ) {
+    if ( memb_hasMembership( $membership_level ) ) {
+        return true;
+    } elseif ( ( $current_date->format( 'Y-m-d H:i:s' ) >= $content_date_start->format( 'Y-m-d H:i:s' ) ) && ( $current_date->format( 'Y-m-d H:i:s' ) <= $content_date_end->format( 'Y-m-d H:i:s' ) ) ) {
         return true;
     }
 
