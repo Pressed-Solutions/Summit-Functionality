@@ -68,6 +68,9 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 # Changelog
 
+- 1.4.4
+    - Fix typo and add PSD for session-ended-banner.png
+
 - 1.4.3
     - Add option for go-live time
 
