@@ -68,6 +68,9 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 # Changelog
 
+- 1.4.1
+    - Fix timezone and access logic issues
+
 - 1.4
     - Add time settings for content access
     - Improve access control using `memb_hasMembershipLevel` with a specified level instead of relying on `is_user_logged_in`
