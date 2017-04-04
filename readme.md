@@ -68,6 +68,9 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 # Changelog
 
+- 1.4.2
+    - Fix more timezone issues
+
 - 1.4.1
     - Fix timezone and access logic issues
 

@@ -3,7 +3,7 @@
  * Plugin Name: Summit Functionality
  * Plugin URI: https://bitbucket.org/pressedsolutions/summit-functionality
  * Description: Summit functionality including speakers, date-restricted video access, and more
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author: Pressed Solutions
  * Author URI: https://pressedsolutions.com
  */
@@ -242,12 +242,12 @@ add_filter( 'template_include', 'sf_template_loader' );
  */
 function get_access_permissions( $content_date_start, $content_date_end = NULL, $time = '10', $timezone = 'America/New_York', $membership_level = NULL ) {
     // content begin date
-    $content_date_start = date_create_from_format( 'Ymd H:i:s T', $content_date_start . '00:00:00 ' . $timezone );
+    $content_date_start = date_create_from_format( 'Ymd H:i:s e', $content_date_start . ' 00:00:00 ' . $timezone );
     $content_date_start = date_add( $content_date_start, date_interval_create_from_date_string( $time . ' hours' ) );
 
     // content end date
     if ( $content_date_end && $content_date_end != NULL ) {
-        $content_date_end = date_create_from_format( 'Ymd H:i:s T', $content_date_end . '00:00:00 ' . $timezone );
+        $content_date_end = date_create_from_format( 'Ymd H:i:s e', $content_date_end . ' 00:00:00 ' . $timezone );
         $content_date_end = date_add( $content_date_end, date_interval_create_from_date_string( $time . ' hours' ) );
     } else {
         $content_date_end = date_create_from_format( 'U', $content_date_start->format( 'U' ) );
@@ -260,7 +260,7 @@ function get_access_permissions( $content_date_start, $content_date_end = NULL, 
 
     if ( memb_hasMembership( $membership_level ) ) {
         return true;
-    } elseif ( ( $current_date->format( 'Y-m-d H:i:s' ) >= $content_date_start->format( 'Y-m-d H:i:s' ) ) && ( $current_date->format( 'Y-m-d H:i:s' ) <= $content_date_end->format( 'Y-m-d H:i:s' ) ) ) {
+    } elseif ( ( $current_date->format( 'U' ) >= $content_date_start->format( 'U' ) ) && ( $current_date->format( 'U' ) <= $content_date_end->format( 'U' ) ) ) {
         return true;
     }
 
