@@ -240,7 +240,7 @@ add_filter( 'template_include', 'sf_template_loader' );
  * @param  string  $membership_level   string of Memberium membership level for determining access
  * @return boolean user does/doesn't have access
  */
-function get_access_permissions( $content_date_start, $content_date_end = NULL, $time = '10', $timezone = 'EST', $membership_level = NULL ) {
+function get_access_permissions( $content_date_start, $content_date_end = NULL, $time = '10', $timezone = 'America/New_York', $membership_level = NULL ) {
     // content begin date
     $content_date_start = date_create_from_format( 'Ymd H:i:s T', $content_date_start . '00:00:00 ' . $timezone );
     $content_date_start = date_add( $content_date_start, date_interval_create_from_date_string( $time . ' hours' ) );

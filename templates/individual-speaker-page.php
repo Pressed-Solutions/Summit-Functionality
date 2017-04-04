@@ -20,7 +20,8 @@
                 foreach ( $post_categories as $post_category ) {
                     $memberium_level = get_field( 'memberium_level', 'option' );
                     $active_date = get_field( 'date', $post_category );
-                    $active_access = get_access_permissions( $active_date, NULL, 10, 'EST', $memberium_level );
+                    $active_access = get_access_permissions( $active_date, NULL, 10, 'America/New_York', $memberium_level );
+
                     if ( $active_access ) {
                         echo '<p class="embed-container">' . get_field( 'video_link' ) . '</p>';
                         if ( get_field( 'video_download_url' ) && memb_hasMembership( $memberium_level ) ) {
