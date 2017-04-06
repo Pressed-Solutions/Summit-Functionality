@@ -67,6 +67,9 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 # Changelog
 
+- 1.5.1
+    - Show `full` size bonus images in sidebar instead of cropped images
+
 - 1.5.0
     - Add support for event day start/end times
     - Add support for before/after sales promo images

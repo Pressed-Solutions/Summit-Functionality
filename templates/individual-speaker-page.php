@@ -110,13 +110,13 @@
             <?php endif; ?>
 
             <?php if ( get_field( 'bonus_image' ) ): ?>
-                <p><a href="<?php the_field( 'bonus_link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'bonus_image' ), array( 250, 250 ), false, array( 'class' => 'img img-responsive' ) ); ?></a></p>
+                <p><a href="<?php the_field( 'bonus_link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'bonus_image' ), 'full', false, array( 'class' => 'img img-responsive' ) ); ?></a></p>
             <?php endif; ?>
 
             <?php
             if ( get_field( 'bonuses_r' ) ) {
                 foreach ( get_field( 'bonuses_r' ) as $bonus ) { ?>
-                    <p><a href="<?php echo $bonus['bonus_link_r']; ?>"><?php echo wp_get_attachment_image( $bonus['bonus_image_r'], array( 250, 250 ), false, array( 'class' => 'img img-responsive' ) ); ?></a></p>
+                    <p><a href="<?php echo $bonus['bonus_link_r']; ?>"><?php echo wp_get_attachment_image( $bonus['bonus_image_r'], 'full', false, array( 'class' => 'img img-responsive' ) ); ?></a></p>
                 <?php }
             } ?>
 

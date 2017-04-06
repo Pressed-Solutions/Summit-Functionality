@@ -3,7 +3,7 @@
  * Plugin Name: Summit Functionality
  * Plugin URI: https://bitbucket.org/pressedsolutions/summit-functionality
  * Description: Summit functionality including speakers, date-restricted video access, and more
- * Version: 1.5.0
+ * Version: 1.5.1
  * Author: Pressed Solutions
  * Author URI: https://pressedsolutions.com
  */
