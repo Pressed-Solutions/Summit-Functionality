@@ -19,17 +19,20 @@
                 $post_categories = get_the_category();
                 foreach ( $post_categories as $post_category ) {
                     $memberium_level = get_field( 'memberium_level', 'option' );
-                    $active_date = get_field( 'date', $post_category );
-                    $go_live_time = get_field( 'go_live_time', 'option' );
-                    $active_access = get_access_permissions( $active_date, NULL, $go_live_time, 'America/New_York', $memberium_level );
+                    $start_date = get_field( 'start_date', $post_category );
+                    $end_date = get_field( 'end_date', $post_category );
+                    $timezone = get_field( 'timezone', $post_category );
+                    $active_access = get_access_permissions( $start_date, $end_date, $timezone, $memberium_level );
 
-                    if ( $active_access ) {
+                    if ( $active_access === true ) {
                         echo '<p class="embed-container">' . get_field( 'video_link' ) . '</p>';
                         if ( get_field( 'video_download_url' ) && memb_hasMembership( $memberium_level ) ) {
                             echo '<p><a href="' . get_field( 'video_download_url' ) . '" class="btn btn-primary btn-lg btn-block">Download Video</a></p>';
                         }
-                    } elseif ( $active_date < date( 'Ymd' ) && ! is_user_logged_in() ) {
-                        the_field( 'sales_promo' );
+                    } elseif ( date( 'Ue' ) < date( 'Ue', $start_date . $timezone ) ) {
+                        the_field( 'sales_promo_before' );
+                    } else {
+                        the_field( 'sales_promo_after' );
                     }
                 }
             }
@@ -39,9 +42,18 @@
             }
 
             the_content();
+
+            $promo_image_parameters = array(
+                'size' => 'full',
+                false,
+                array(
+                    'class' => 'img img-responsive',
+                    'alt' => 'Register Now',
+                )
+            );
             ?>
 
-            <p><a href="<?php echo apply_filters( 'sf_purchase_link', get_home_url() . '/purchase/' ); ?>"><img src="<?php echo apply_filters( 'sf_purchase_access_image', get_stylesheet_directory_uri() . '/img/sales.png' ); ?>" alt="Register now" class="img img-responsive" /></a></p>
+            <p><a href="<?php the_field( 'purchase_page', 'option' ) ?>"><?php echo wp_get_attachment_image( get_field( 'sales_promo_image', 'option' ), apply_filters( 'sf_purchase_access_image', $promo_image_parameters ) ); ?></a></p>
             <?php wp_link_pages(); ?>
 
             <h2 id="comment-both"><span>Comments</span></h2>

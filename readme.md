@@ -62,11 +62,15 @@ If no default is listed here, the parameter defaults to NULL. For more info, see
 
 ## Filters
 
-- `sf_purchase_link`: purchase page URL; defaults to `get_home_url() . '/purchase/'`
-- `sf_purchase_access_image`: purchase image shown at the bottom of each summit_speaker content; defaults to `get_stylesheet_directory_uri() . '/img/sales.png'`
+- `sf_purchase_access_image`: modify the paramaters for the sales promo image; see https://developer.wordpress.org/reference/functions/wp_get_attachment_image/#parameters for more details
 
 
 # Changelog
+
+- 1.5.0
+    - Add support for event day start/end times
+    - Add support for before/after sales promo images
+    - Remove `sf_purchase_link` in favor of an ACF option
 
 - 1.4.4
     - Fix typo and add PSD for session-ended-banner.png

@@ -90,19 +90,22 @@ function sf_today_speakers( $attributes ) {
     $categories = get_categories( $category_args );
 
     $cat_array = array();
-    $first_date = '100000000';
+    $first_date = '32503680000'; /* impossibly large date: January 1, 3000 */
     $last_date = '0';
     if ( $categories ) {
         foreach ( $categories as $category ) {
-            $this_category_date = get_field( 'date', $category );
-            if ( $this_category_date == date( 'Ymd' ) ) {
+            $start_date = get_field( 'start_date', $category );
+            $end_date = get_field( 'end_date', $category );
+            $timezone = get_field( 'timezone', $category );
+
+            if ( get_access_permissions( $start_date, $end_date, $timezone, 'ignore', true ) === true ) {
                 $cat_array[] = $category->term_id;
             }
-            if ( $this_category_date < $first_date ) {
-                $first_date = $this_category_date;
+            if ( $start_date < $first_date ) {
+                $first_date = $start_date;
             }
-            if ( $this_category_date > $last_date ) {
-                $last_date = $this_category_date;
+            if ( $end_date > $last_date ) {
+                $last_date = $end_date;
             }
         }
     }
@@ -129,13 +132,13 @@ function sf_today_speakers( $attributes ) {
         wp_reset_postdata(); ?>
 
     <?php } else {
-    if ( $first_date > date( 'Ymd' ) ) { ?>
+    if ( $first_date > time() ) { ?>
         <h2>Sorry, Nothing&rsquo;s Available Yet</h2>
-        <p>Please come back on <?php echo date( 'l, F j, Y', strtotime( $first_date ) ) ?>.</p>
+        <p>Please come back on <?php echo date( 'l, F j, Y', $first_date ) ?>.</p>
     <?php } elseif ( $last_date < date( 'Ymd' ) ) { ?>
         <h2>Sorry, This Summit Has Ended</h2>
         <p>However, you can still purchase access!</p>
-        <p><a href="<?php echo apply_filters( 'sf_purchase_link', get_home_url() . '/purchase/' ); ?>" class="btn btn-primary btn-lg">Purchase Access</a></p>
+        <p><a href="<?php the_field( 'purchase_page', 'option' ); ?>" class="btn btn-primary btn-lg">Purchase Access</a></p>
     <?php }
     }
 

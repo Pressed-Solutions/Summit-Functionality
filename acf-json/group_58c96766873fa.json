@@ -306,18 +306,37 @@
         },
         {
             "key": "field_58c972a76dd18",
-            "label": "Sales Promo",
-            "name": "sales_promo",
+            "label": "Sales Promo (Before)",
+            "name": "sales_promo_before",
             "type": "wysiwyg",
-            "instructions": "Displayed after the scheduled date has passed.\r\nSet scheduled dates under Pages > Categories (edit each category and set the date field appropriately).",
+            "instructions": "Displayed before the scheduled date has arrived (for users who have not purchased access).\r\nSet scheduled dates under Pages > Categories (edit each category and set the start date, end date, and timezone fields appropriately).\r\nA Photoshop template is <a href=\"\/wp-content\/plugins\/summit-functionality\/assets\/img\/sales-promo-image.psd\">available here<\/a>.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "default_value": "<a href=\"https:\/\/weightloss-summit.com\/sales\"><img class=\"alignnone\" src=\"https:\/\/weightloss-summit.com\/wp-content\/plugins\/summit-functionality\/assets\/img\/session-ended-banner.png\" alt=\"Get Instant Access!\" width=\"648\" height=\"450\" \/><\/a>",
+            "default_value": "<a href=\"\/sales\/\"><img class=\"alignnone\" src=\"\/wp-content\/plugins\/summit-functionality\/assets\/img\/sales-promo-image-before.png\" alt=\"Get Instant Access!\" width=\"648\" height=\"450\" \/><\/a>",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_58e6525b2fb18",
+            "label": "Sales Promo (After)",
+            "name": "sales_promo_after",
+            "type": "wysiwyg",
+            "instructions": "Displayed after the scheduled date has passed (for users who have not purchased access).\r\nSet scheduled dates under Pages > Categories (edit each category and set the start date, end date, and timezone fields appropriately).\r\nA Photoshop template is <a href=\"\/wp-content\/plugins\/summit-functionality\/assets\/img\/sales-promo-image.psd\">available here<\/a>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<a href=\"\/sales\/\"><img class=\"alignnone\" src=\"\/wp-content\/plugins\/summit-functionality\/assets\/img\/sales-promo-image-after.png\" alt=\"Get Instant Access!\" width=\"648\" height=\"450\" \/><\/a>",
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
@@ -336,7 +355,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Talk description and details below",
+            "message": "Talk description and details below.",
             "new_lines": "wpautop",
             "esc_html": 0
         }
@@ -365,5 +384,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1489719565
+    "modified": 1491491981
 }

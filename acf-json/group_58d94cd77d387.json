@@ -7,11 +7,11 @@
             "label": "Memberium Level",
             "name": "memberium_level",
             "type": "text",
-            "instructions": "Name of the Memberium membership level for content control",
+            "instructions": "Name of the Memberium membership level for those who purchase access.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -20,6 +20,51 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_58e64750f59ac",
+            "label": "Purchase Page",
+            "name": "purchase_page",
+            "type": "page_link",
+            "instructions": "Page where people can purchase access.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "allow_archives": 1,
+            "multiple": 0
+        },
+        {
+            "key": "field_58e6477610bcc",
+            "label": "Sales Promo Image",
+            "name": "sales_promo_image",
+            "type": "image",
+            "instructions": "Image shown if the visitor doesn’t have access.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -39,5 +84,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1491482494
+    "modified": 1491489164
 }

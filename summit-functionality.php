@@ -3,7 +3,7 @@
  * Plugin Name: Summit Functionality
  * Plugin URI: https://bitbucket.org/pressedsolutions/summit-functionality
  * Description: Summit functionality including speakers, date-restricted video access, and more
- * Version: 1.4.4
+ * Version: 1.5.0
  * Author: Pressed Solutions
  * Author URI: https://pressedsolutions.com
  */
@@ -235,22 +235,23 @@ add_filter( 'template_include', 'sf_template_loader' );
  *
  * @param  string  $content_date_start Ymd-formatted date string when content becomes available
  * @param  string  $content_date_end   Ymd-formatted date string when content becomes unavailable; defaults to 1 day after $content_date_start
- * @param  integer $time               hour of day when content becomes available/unavailable; defaults to 10
  * @param  string  $timezone           timezone string; defaults to EST
  * @param  string  $membership_level   string of Memberium membership level for determining access
+ * @param  boolean $ignore_admin       whether to ignore admin users (Memberium automatically includes admins in any membership level)
  * @return boolean user does/doesn't have access
  */
-function get_access_permissions( $content_date_start, $content_date_end = NULL, $time = '10', $timezone = 'America/New_York', $membership_level = NULL ) {
+function get_access_permissions( $content_date_start, $content_date_end = NULL, $timezone = 'America/New_York', $membership_level = NULL, $ignore_admin = false ) {
+
     // content begin date
-    $content_date_start = date_create_from_format( 'Ymd H:i:s e', $content_date_start . ' 00:00:00 ' . $timezone );
+    $content_date_start = date_create_from_format( 'Ue', $content_date_start . $timezone );
     $content_date_start = date_add( $content_date_start, date_interval_create_from_date_string( $time . ' hours' ) );
 
     // content end date
     if ( $content_date_end && $content_date_end != NULL ) {
-        $content_date_end = date_create_from_format( 'Ymd H:i:s e', $content_date_end . ' 00:00:00 ' . $timezone );
+        $content_date_end = date_create_from_format( 'Ue', $content_date_end . $timezone );
         $content_date_end = date_add( $content_date_end, date_interval_create_from_date_string( $time . ' hours' ) );
     } else {
-        $content_date_end = date_create_from_format( 'U', $content_date_start->format( 'U' ) );
+        $content_date_end = date_create_from_format( '', $content_date_start->format( 'U' ) );
         $content_date_end = date_add( $content_date_end, date_interval_create_from_date_string( '1 day' ) );
     }
 
@@ -258,7 +259,7 @@ function get_access_permissions( $content_date_start, $content_date_end = NULL, 
     $current_date = new DateTime();
     $current_date = date_timezone_set( $current_date, timezone_open( $timezone ) );
 
-    if ( memb_hasMembership( $membership_level ) ) {
+    if ( memb_hasMembership( $membership_level ) && ! $ignore_admin ) {
         return true;
     } elseif ( ( $current_date->format( 'U' ) >= $content_date_start->format( 'U' ) ) && ( $current_date->format( 'U' ) <= $content_date_end->format( 'U' ) ) ) {
         return true;

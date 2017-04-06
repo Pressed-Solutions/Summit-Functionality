@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "d\/m\/Y g:i a",
+            "display_format": "F j, Y g:i a",
             "return_format": "U",
             "first_day": 0
         },
@@ -32,9 +32,24 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "d\/m\/Y g:i a",
+            "display_format": "F j, Y g:i a",
             "return_format": "U",
             "first_day": 0
+        },
+        {
+            "key": "field_58e63da8d8495",
+            "label": "Timezone",
+            "name": "timezone",
+            "type": "timezone_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_time_zone": "American\/New_York"
         }
     ],
     "location": [
@@ -54,5 +69,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1491482460
+    "modified": 1491485697
 }
