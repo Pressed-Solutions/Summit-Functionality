@@ -4,9 +4,9 @@
     "fields": [
         {
             "key": "field_58c95974aa753",
-            "label": "Date",
-            "name": "date",
-            "type": "date_picker",
+            "label": "Start Date\/Time",
+            "name": "start_date",
+            "type": "date_time_picker",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,8 +15,25 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "F j, Y",
-            "return_format": "Ymd",
+            "display_format": "d\/m\/Y g:i a",
+            "return_format": "U",
+            "first_day": 0
+        },
+        {
+            "key": "field_58e636d1c605e",
+            "label": "End Date\/Time",
+            "name": "end_date",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y g:i a",
+            "return_format": "U",
             "first_day": 0
         }
     ],
@@ -37,5 +54,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1489608267
+    "modified": 1491482460
 }
