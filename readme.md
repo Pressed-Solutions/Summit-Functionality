@@ -2,7 +2,7 @@
 
 A simple plugin to add summit functionality.
 
-This plugin provides a “Summit Speakers” custom post type and adds a bunch of custom fields. add a category for each day of the summit, and specify the date in each category’s custom term meta.
+This plugin provides a “Summit Speakers” custom post type and adds a bunch of custom fields. Add a category for each day of the summit, and specify the date in each category’s custom data fields.
 
 Each speaker’s video and download link will show up only on the specified day for free users, and will show up on the specified day and thereafter for users who purchase access.
 
